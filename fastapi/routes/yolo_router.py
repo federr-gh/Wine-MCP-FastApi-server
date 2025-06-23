@@ -14,6 +14,7 @@ async def get_marsupial(image: Image):
     Returns a predict of marsupial.
     """
     try:
+        model = YOLO(MODEL_PATH)
         pred = model.predict(image.image_base64)
         boxes = pred[0].boxes
         if boxes is None or len(boxes) == 0:
